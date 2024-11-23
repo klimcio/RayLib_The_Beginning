@@ -1,14 +1,21 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Raylib_cs;
 
-Raylib.InitWindow(800, 480, "Hello World");
+const int width = 800;
+const int height = 480;
+const string title = "Hello World";
 
+Raylib.InitWindow(width, height, title);
+
+Raylib.SetTargetFPS(60);
+
+// Main game loop
 while (!Raylib.WindowShouldClose())
 {
     Raylib.BeginDrawing();
-    Raylib.ClearBackground(Color.White);
+    Raylib.ClearBackground(Color.RayWhite);
 
-    Raylib.DrawText("Hello, world!", 12, 12, 20, Color.Black);
+    Raylib.DrawText("Congrats! You have created your first window!", 190, 200, 20, Color.LightGray);
 
     Raylib.EndDrawing();
 }
