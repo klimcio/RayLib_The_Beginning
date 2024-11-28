@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Raylib_cs;
+﻿using Raylib_cs;
 
 public class LogoPhase : IGamePhase
 {
@@ -17,6 +15,6 @@ public class LogoPhase : IGamePhase
 
     public void Draw()
     {
-        Raylib.DrawText("LOGO SCREEN " + frameCounter.ToString(), 20, 20, 40, Color.Black);
+        Raylib.DrawText("LOGO SCREEN", 20, 20, 40, Color.Black);
     }
 }

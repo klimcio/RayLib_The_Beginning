@@ -4,32 +4,14 @@ enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING };
 
 internal class Program
 {
-    private static bool currentScreenChanged = true;
-    
-    private static GameScreen _currentScreen = GameScreen.LOGO;
-    public static GameScreen currentScreen 
-    { 
-        get => _currentScreen;
-        set
-        {
-            if (value == _currentScreen)
-                currentScreenChanged = false;
-            else
-            {
-                currentScreenChanged = true;
-                _currentScreen = value;
-            }
-        }
-    }
+    public static GameScreen currentScreen { get; set; } = GameScreen.LOGO;
 
     public const int width = 800;
     public const int height = 450;
 
     private static void Main(string[] args)
     {
-        const string title = "Hello World";
-
-        Raylib.InitWindow(width, height, title);
+        Raylib.InitWindow(width, height, "Hello World");
         Raylib.SetTargetFPS(60);
 
         IGamePhase currentGamePhase = GetGamePhase(currentScreen);
@@ -37,8 +19,7 @@ internal class Program
         // Main game loop
         while (!Raylib.WindowShouldClose())
         {
-            if (currentScreenChanged)
-                currentGamePhase = GetGamePhase(currentScreen);
+            currentGamePhase = GetGamePhase(currentScreen);
 
             currentGamePhase.Update();
 
