@@ -24,7 +24,6 @@ internal class Program
             currentGamePhase.Update();
 
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.RayWhite);
 
             currentGamePhase.Draw();
 

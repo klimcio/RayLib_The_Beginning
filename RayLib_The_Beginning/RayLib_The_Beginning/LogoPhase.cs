@@ -15,6 +15,8 @@ public class LogoPhase : IGamePhase
 
     public void Draw()
     {
+        Raylib.ClearBackground(Color.RayWhite);
+
         Raylib.DrawText("LOGO SCREEN", 20, 20, 40, Color.Black);
     }
 }

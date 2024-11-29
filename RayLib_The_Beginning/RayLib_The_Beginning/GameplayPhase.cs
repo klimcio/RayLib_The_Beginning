@@ -1,19 +1,27 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Raylib_cs;
+﻿using Raylib_cs;
+using System.Numerics;
 
 public class GameplayPhase : IGamePhase
 {
+    Vector2 ballPosition = new((float)Program.width / 2, (float)Program.height / 2);
+
     public void Draw()
     {
-        Raylib.DrawRectangle(0, 0, Program.width, Program.height, Color.Purple);
-        Raylib.DrawText("GAMEPLAY SCREEN", 20, 20, 40, Color.Maroon);
-        Raylib.DrawText("PRESS ENTER to JUMP to ENDING SCREEN", 290, 220, 20, Color.Maroon);
+        Raylib.ClearBackground(Color.RayWhite);
+
+        Raylib.DrawText("move the ball with arrow keys", 10, 10, 20, Color.DarkGray);
+
+        Raylib.DrawCircleV(ballPosition, 50, Color.Maroon);
     }
 
     public void Update()
     {
-        if (Raylib.IsKeyPressed(KeyboardKey.Enter)) // || Raylib.IsGestureDetected(Gesture.Tap))
+        if (Raylib.IsKeyDown(KeyboardKey.Right)) ballPosition.X += 2.0f;
+        if (Raylib.IsKeyDown(KeyboardKey.Left)) ballPosition.X -= 2.0f;
+        if (Raylib.IsKeyDown(KeyboardKey.Up)) ballPosition.Y -= 2.0f;
+        if (Raylib.IsKeyDown(KeyboardKey.Down)) ballPosition.Y += 2.0f;
+
+        if (Raylib.IsKeyPressed(KeyboardKey.Escape))
         {
             Program.currentScreen = GameScreen.ENDING;
         }
