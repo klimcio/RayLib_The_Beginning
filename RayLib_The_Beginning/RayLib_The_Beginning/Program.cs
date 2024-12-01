@@ -12,20 +12,43 @@ internal class Program
     private static void Main(string[] args)
     {
         Raylib.InitWindow(width, height, "Hello World");
+        Raylib.SetExitKey(KeyboardKey.Null);
         Raylib.SetTargetFPS(60);
+
+        bool exitWindowRequested = false;
+        bool exitWindow = false;
 
         IGamePhase currentGamePhase = GetGamePhase(currentScreen);
 
         // Main game loop
-        while (!Raylib.WindowShouldClose())
+        while (!exitWindow)
         {
+            if (Raylib.WindowShouldClose() || Raylib.IsKeyPressed(KeyboardKey.Escape))
+                exitWindowRequested = true;
+
+            if (exitWindowRequested)
+            {
+                if (Raylib.IsKeyPressed(KeyboardKey.Y)) exitWindow = true;
+                else if (Raylib.IsKeyPressed(KeyboardKey.N)) exitWindowRequested = false;
+            }
+
             currentGamePhase = GetGamePhase(currentScreen);
 
             currentGamePhase.Update();
 
             Raylib.BeginDrawing();
 
-            currentGamePhase.Draw();
+            if (exitWindowRequested)
+            {
+                Raylib.DrawRectangle(0, 100, width, 200, Color.Black);
+                Raylib.DrawText("Do you really want to exit?", 40, 180, 30, Color.White);
+                Raylib.DrawText("Press Y to confirm or N to cancel", 120, 200, 20, Color.LightGray);
+            }
+            else
+            {
+                currentGamePhase.Draw();
+            }
+
 
             Raylib.EndDrawing();
         }
