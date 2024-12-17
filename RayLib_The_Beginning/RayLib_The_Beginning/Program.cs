@@ -5,15 +5,13 @@ enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING };
 internal class Program
 {
     public static GameScreen currentScreen { get; set; } = GameScreen.LOGO;
-
-    public const int width = 800;
-    public const int height = 450;
+    public static Settings settings = new();
 
     private static void Main(string[] args)
     {
-        Raylib.InitWindow(width, height, "Hello World");
+        Raylib.InitWindow(settings.Width, settings.Height, "Hello World");
         Raylib.SetExitKey(KeyboardKey.Null);
-        Raylib.SetTargetFPS(60);
+        Raylib.SetTargetFPS(settings.TargetFPS);
 
         bool exitWindowRequested = false;
         bool exitWindow = false;
@@ -40,7 +38,7 @@ internal class Program
 
             if (exitWindowRequested)
             {
-                Raylib.DrawRectangle(0, 100, width, 200, Color.Black);
+                Raylib.DrawRectangle(0, 100, settings.Width, 200, Color.Black);
                 Raylib.DrawText("Do you really want to exit?", 40, 180, 30, Color.White);
                 Raylib.DrawText("Press Y to confirm or N to cancel", 120, 200, 20, Color.LightGray);
             }
@@ -67,10 +65,10 @@ internal class Program
     {
         return currentScreen switch
         {
-            GameScreen.TITLE => titlePhase == null ? titlePhase = new TitlePhase() : titlePhase,
-            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new GameplayPhase() : gameplayPhase,
-            GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase() : endingPhase,
-            _ => logoPhase == null ? logoPhase = new LogoPhase() : logoPhase,
+            GameScreen.TITLE => titlePhase == null ? titlePhase = new TitlePhase(settings) : titlePhase,
+            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new GameplayPhase(settings) : gameplayPhase,
+            GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase(settings) : endingPhase,
+            _ => logoPhase == null ? logoPhase = new LogoPhase(settings) : logoPhase,
         };
     }
 }

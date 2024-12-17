@@ -3,6 +3,12 @@
 public class LogoPhase : IGamePhase
 {
     private int frameCounter = 0;
+    private Settings settings;
+
+    public LogoPhase(Settings settings)
+    {
+        this.settings = settings;
+    }
 
     public void Update()
     {
