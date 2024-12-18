@@ -23,6 +23,8 @@ public class LogoPhase : IGamePhase
     {
         Raylib.ClearBackground(Color.RayWhite);
 
-        Raylib.DrawText("LOGO SCREEN", 20, 20, 40, Color.Black);
+        Raylib.DrawRectangle(settings.Width / 2 - 128, settings.Height / 2 - 128, 256, 256, Color.Black);
+        Raylib.DrawRectangle(settings.Width / 2 - 112, settings.Height / 2 - 112, 224, 224, Color.RayWhite);
+        Raylib.DrawText("raylib", settings.Width / 2 - 44, settings.Height / 2 + 48, 50, Color.Black);
     }
 }
