@@ -4,19 +4,37 @@ using System.Numerics;
 
 public class Protagonist
 {
-    Vector2 ballPosition;
+    Vector2 position;
+    Vector2 speed;
+    int radius = 20;
 
-    public Protagonist(Vector2 screenCenter)
+    public Protagonist(Vector2 screenCenter, Vector2 speedVector)
     {
-        ballPosition = screenCenter;
+        position = screenCenter;
+        speed = speedVector;
     }
 
     public void Draw()
-        => ballPosition.DrawCircle(50, Color.Maroon);
+        => position.DrawCircle(radius, Color.Maroon);
 
     public void MoveHorizontally(float newH)
-        => ballPosition.X += newH;
+        => position.X += newH;
 
     public void MoveVertically(float newH)
-        => ballPosition.Y += newH;
+        => position.Y += newH;
+
+    internal bool CheckCollisionX(int screenWidth) 
+        => (position.X >= (screenWidth - radius)) || (position.X <= radius);
+
+    internal bool CheckCollisionY(int screenHeight) 
+        => (position.Y >= (screenHeight - radius)) || (position.Y <= radius);
+
+    internal void Update(Vector2? newSpeed)
+    {
+        if (newSpeed.HasValue)
+            speed = newSpeed.Value;
+
+        position.X += speed.X;
+        position.Y += speed.Y;
+    }
 }

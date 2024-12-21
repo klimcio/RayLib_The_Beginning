@@ -9,6 +9,8 @@ internal class Program
 
     private static void Main(string[] args)
     {
+        Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
+
         Raylib.InitWindow(settings.Width, settings.Height, "Hello World");
         Raylib.SetExitKey(KeyboardKey.Null);
         Raylib.SetTargetFPS(settings.TargetFPS);
@@ -16,7 +18,7 @@ internal class Program
         bool exitWindowRequested = false;
         bool exitWindow = false;
 
-        IGamePhase currentGamePhase = GetGamePhase(currentScreen);
+        IGamePhase currentGamePhase;
 
         // Main game loop
         while (!exitWindow)
@@ -46,7 +48,6 @@ internal class Program
             {
                 currentGamePhase.Draw();
             }
-
 
             Raylib.EndDrawing();
         }

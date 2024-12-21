@@ -2,7 +2,7 @@
 
 public class Settings
 {
-    public float BallSpeed { get; set; } = 2.0f;
+    // public float BallSpeed { get; set; } = 2.0f;
     public int Width { get; set; } = 800;
     public int Height { get; set; } = 450;
     public int TargetFPS { get; set; } = 60;

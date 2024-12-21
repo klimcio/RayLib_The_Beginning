@@ -3,16 +3,21 @@ using System.Numerics;
 
 public class GameplayPhase : IGamePhase
 {
-    private Protagonist protagonist;
-
-    private Settings settings;
-    private float rotation = 0f;
+    Protagonist protagonist;
+    Settings settings;
+    float rotation = 0f;
+    bool IsPause = false;
+    int frameCounter = 0;
+    Vector2 initialSpeed = new(5.0f, 4.0f);
 
     public GameplayPhase(Settings settings)
     {
         this.settings = settings;
 
-        protagonist = new Protagonist(settings.ScreenCenter);
+        protagonist = new Protagonist(
+            settings.ScreenCenter, 
+            initialSpeed
+        );
     }
 
     public void Draw()
@@ -21,43 +26,37 @@ public class GameplayPhase : IGamePhase
 
         Raylib.ClearBackground(Color.RayWhite);
 
-        Raylib.DrawText("move the ball with arrow keys", 10, 10, 20, Color.DarkGray);
+        protagonist.Draw();
 
-        Raylib.DrawCircle(settings.Width/5, 120, 35, Color.DarkBlue);
-        Raylib.DrawCircleGradient(settings.Width / 5, 220, 60, Color.Green, Color.SkyBlue);
-        Raylib.DrawCircleLines(settings.Width / 5, 340, 80, Color.DarkBlue);
+        if (IsPause && (frameCounter/30%2 == 0))
+            Raylib.DrawText("paused", 350, 200, 30, Color.Gray);
 
-        Raylib.DrawRectangle(settings.Width / 4 * 2 - 60, 100, 120, 60, Color.Red);
-        Raylib.DrawRectangleGradientH(settings.Width / 4 * 2 - 90, 170, 180, 130, Color.Maroon, Color.Gold);
-        Raylib.DrawRectangleLines(settings.Width / 4 * 2 - 40, 320, 80, 60, Color.Orange);
-
-        Raylib.DrawTriangle(
-            new Vector2(settings.Width / 4 * 3, 80), 
-            new Vector2(settings.Width / 4 * 3 - 60, 150), 
-            new Vector2(settings.Width / 4 * 3 + 60, 150), Color.Violet);
-
-        Raylib.DrawTriangleLines(
-            new Vector2(settings.Width / 4 * 3, 160),
-            new Vector2(settings.Width / 4 * 3 - 20, 230),
-            new Vector2(settings.Width / 4 * 3 + 20, 230), Color.DarkBlue);
-
-        Raylib.DrawPoly(new Vector2(settings.Width / 4 * 3, 330), 6, 80, rotation, Color.Gold);
-        Raylib.DrawPolyLines(new Vector2(settings.Width / 4 * 3, 330), 6, 90, rotation, Color.DarkBlue);
-        Raylib.DrawPolyLinesEx(new Vector2(settings.Width / 4 * 3, 330), 6, 85, rotation, 6, Color.DarkBlue);
-
-        //protagonist.Draw();
+        Raylib.DrawFPS(10, 10);
     }
 
     public void Update()
     {
-        if (Raylib.IsKeyDown(KeyboardKey.Right)) protagonist.MoveHorizontally(settings.BallSpeed);
-        if (Raylib.IsKeyDown(KeyboardKey.Left)) protagonist.MoveHorizontally(-settings.BallSpeed);
-        if (Raylib.IsKeyDown(KeyboardKey.Up)) protagonist.MoveVertically(-settings.BallSpeed);
-        if (Raylib.IsKeyDown(KeyboardKey.Down)) protagonist.MoveVertically(settings.BallSpeed);
+        if (Raylib.IsKeyPressed(KeyboardKey.Space)) IsPause = !IsPause;
 
-        if (Raylib.IsKeyPressed(KeyboardKey.Escape))
+        if (!IsPause)
         {
-            Program.currentScreen = GameScreen.ENDING;
+            // protagonist.Update();
+
+            if (protagonist.CheckCollisionX(Raylib.GetScreenWidth())) initialSpeed.X *= -1.0f;
+            if (protagonist.CheckCollisionY(Raylib.GetScreenHeight())) initialSpeed.Y *= -1.0f;
+
+            protagonist.Update(initialSpeed);
         }
+        else frameCounter++;
+
+        // if (Raylib.IsKeyDown(KeyboardKey.Right)) protagonist.MoveHorizontally(settings.BallSpeed);
+        // if (Raylib.IsKeyDown(KeyboardKey.Left)) protagonist.MoveHorizontally(-settings.BallSpeed);
+        // if (Raylib.IsKeyDown(KeyboardKey.Up)) protagonist.MoveVertically(-settings.BallSpeed);
+        // if (Raylib.IsKeyDown(KeyboardKey.Down)) protagonist.MoveVertically(settings.BallSpeed);
+
+        // if (Raylib.IsKeyPressed(KeyboardKey.Escape))
+        // {
+        //     Program.currentScreen = GameScreen.ENDING;
+        // }
     }
 }
