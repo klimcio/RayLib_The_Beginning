@@ -9,4 +9,8 @@ public class Settings
 
     public Vector2 ScreenCenter
         => new(Width / 2, Height / 2);
+
+    public Screen Screen => new(Width, Height);
 }
+
+public record Screen(int Width, int Height);

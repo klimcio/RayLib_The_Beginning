@@ -4,6 +4,7 @@ using System.Numerics;
 public class GameplayPhase : IGamePhase
 {
     Protagonist protagonist;
+
     Settings settings;
     float rotation = 0f;
     bool IsPause = false;
@@ -42,21 +43,19 @@ public class GameplayPhase : IGamePhase
         {
             // protagonist.Update();
 
-            if (protagonist.CheckCollisionX(Raylib.GetScreenWidth())) initialSpeed.X *= -1.0f;
-            if (protagonist.CheckCollisionY(Raylib.GetScreenHeight())) initialSpeed.Y *= -1.0f;
+            if (protagonist.IsCollidingWithScreenBorderX()) initialSpeed.X *= -1.0f;
+            if (protagonist.IsCollidingWithScreenBorderY()) initialSpeed.Y *= -1.0f;
 
             protagonist.Update(initialSpeed);
         }
-        else frameCounter++;
-
-        // if (Raylib.IsKeyDown(KeyboardKey.Right)) protagonist.MoveHorizontally(settings.BallSpeed);
-        // if (Raylib.IsKeyDown(KeyboardKey.Left)) protagonist.MoveHorizontally(-settings.BallSpeed);
-        // if (Raylib.IsKeyDown(KeyboardKey.Up)) protagonist.MoveVertically(-settings.BallSpeed);
-        // if (Raylib.IsKeyDown(KeyboardKey.Down)) protagonist.MoveVertically(settings.BallSpeed);
-
-        // if (Raylib.IsKeyPressed(KeyboardKey.Escape))
-        // {
-        //     Program.currentScreen = GameScreen.ENDING;
-        // }
     }
+}
+
+public static class CollisionDetection
+{
+    public static bool IsCollidingWithScreenBorderX(this IAmA2dBeing being)
+        => (being.position.X >= (Raylib.GetScreenWidth() - being.radius)) || (being.position.X <= being.radius);
+
+    public static bool IsCollidingWithScreenBorderY(this IAmA2dBeing being)
+        => (being.position.Y >= (Raylib.GetScreenHeight() - being.radius)) || (being.position.Y <= being.radius);
 }
