@@ -53,7 +53,10 @@ internal class Program
         }
 
         // TODO: Unload all loaded data (textures, fonts, audio) here!
-
+        logoPhase?.Unload();
+        titlePhase?.Unload();
+        gameplayPhase?.Unload();
+        endingPhase?.Unload();
         Raylib.CloseWindow();
     }
 
@@ -67,9 +70,9 @@ internal class Program
         return currentScreen switch
         {
             GameScreen.TITLE => titlePhase == null ? titlePhase = new TitlePhase(settings) : titlePhase,
-            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new GameplayPhase(settings) : gameplayPhase,
+            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new BezierGameplayPhase(settings) : gameplayPhase,
             GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase(settings) : endingPhase,
-            _ => logoPhase == null ? logoPhase = new LogoPhase(settings) : logoPhase,
+            _ => logoPhase == null ? logoPhase = new LogoTexturePhase(settings) : logoPhase,
         };
     }
 }

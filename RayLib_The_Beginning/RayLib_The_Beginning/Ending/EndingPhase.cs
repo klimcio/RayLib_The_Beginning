@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Raylib_cs;
+﻿using Raylib_cs;
 
 public class EndingPhase : IGamePhase
 {
@@ -16,6 +14,10 @@ public class EndingPhase : IGamePhase
         Raylib.DrawRectangle(0, 0, settings.Width, settings.Height, Color.Blue);
         Raylib.DrawText("ENDING SCREEN", 20, 20, 40, Color.DarkBlue);
         Raylib.DrawText("PRESS ENTER to JUMP to TITLE SCREEN", 290, 220, 20, Color.DarkBlue);
+    }
+
+    public void Unload()
+    {
     }
 
     public void Update()

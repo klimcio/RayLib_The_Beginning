@@ -35,6 +35,10 @@ public class GameplayPhase : IGamePhase
         Raylib.DrawFPS(10, 10);
     }
 
+    public void Unload()
+    {
+    }
+
     public void Update()
     {
         if (Raylib.IsKeyPressed(KeyboardKey.Space)) IsPause = !IsPause;
@@ -49,13 +53,4 @@ public class GameplayPhase : IGamePhase
             protagonist.Update(initialSpeed);
         }
     }
-}
-
-public static class CollisionDetection
-{
-    public static bool IsCollidingWithScreenBorderX(this IAmA2dBeing being)
-        => (being.position.X >= (Raylib.GetScreenWidth() - being.radius)) || (being.position.X <= being.radius);
-
-    public static bool IsCollidingWithScreenBorderY(this IAmA2dBeing being)
-        => (being.position.Y >= (Raylib.GetScreenHeight() - being.radius)) || (being.position.Y <= being.radius);
 }
