@@ -72,7 +72,7 @@ internal class Program
             GameScreen.TITLE => titlePhase == null ? titlePhase = new TitlePhase(settings) : titlePhase,
             GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new BezierGameplayPhase(settings) : gameplayPhase,
             GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase(settings) : endingPhase,
-            _ => logoPhase == null ? logoPhase = new LogoTexturePhase(settings) : logoPhase,
+            _ => logoPhase == null ? logoPhase = new LogoImagePhase(settings) : logoPhase,
         };
     }
 }
