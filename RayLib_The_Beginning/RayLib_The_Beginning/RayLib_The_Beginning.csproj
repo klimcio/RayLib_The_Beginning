@@ -8,10 +8,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\fonts\alagard.png" />
+    <None Remove="assets\fonts\alpha_beta.png" />
+    <None Remove="assets\fonts\jupiter_crash.png" />
+    <None Remove="assets\fonts\mecha.png" />
+    <None Remove="assets\fonts\pixantiqua.png" />
+    <None Remove="assets\fonts\pixelplay.png" />
+    <None Remove="assets\fonts\romulus.png" />
+    <None Remove="assets\fonts\setback.png" />
     <None Remove="assets\raylib_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="assets\fonts\alagard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\alpha_beta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\jupiter_crash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\mecha.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\pixantiqua.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\pixelplay.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\romulus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\setback.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\raylib_logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

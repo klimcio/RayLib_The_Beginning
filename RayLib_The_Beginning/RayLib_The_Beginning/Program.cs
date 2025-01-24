@@ -12,6 +12,9 @@ internal class Program
         Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
 
         Raylib.InitWindow(settings.Width, settings.Height, "Hello World");
+
+        RaylibFonts.LoadFonts();
+
         Raylib.SetExitKey(KeyboardKey.Null);
         Raylib.SetTargetFPS(settings.TargetFPS);
 
@@ -57,6 +60,7 @@ internal class Program
         titlePhase?.Unload();
         gameplayPhase?.Unload();
         endingPhase?.Unload();
+        RaylibFonts.UnloadFonts();
         Raylib.CloseWindow();
     }
 
@@ -69,7 +73,7 @@ internal class Program
     {
         return currentScreen switch
         {
-            GameScreen.TITLE => titlePhase == null ? titlePhase = new TitlePhase(settings) : titlePhase,
+            GameScreen.TITLE => titlePhase == null ? titlePhase = new FontTitlePhase(settings) : titlePhase,
             GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new BezierGameplayPhase(settings) : gameplayPhase,
             GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase(settings) : endingPhase,
             _ => logoPhase == null ? logoPhase = new LogoImagePhase(settings) : logoPhase,
