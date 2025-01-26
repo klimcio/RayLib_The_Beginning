@@ -10,6 +10,9 @@
   <ItemGroup>
     <None Remove="assets\fonts\alagard.png" />
     <None Remove="assets\fonts\alpha_beta.png" />
+    <None Remove="assets\fonts\custom_alagard.png" />
+    <None Remove="assets\fonts\custom_jupiter_crash.png" />
+    <None Remove="assets\fonts\custom_mecha.png" />
     <None Remove="assets\fonts\jupiter_crash.png" />
     <None Remove="assets\fonts\mecha.png" />
     <None Remove="assets\fonts\pixantiqua.png" />
@@ -24,6 +27,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\fonts\alpha_beta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\custom_alagard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\custom_jupiter_crash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\fonts\custom_mecha.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\fonts\jupiter_crash.png">

@@ -12,6 +12,9 @@ internal record ExampleMessage(string Text, int Spacing, Color Color, Vector2 Po
         new ExampleMessage("ROMULUS FONT designed by Hewett Tsoi", 3, Color.DarkPurple, new Vector2(20, 190)),
         new ExampleMessage("PIXANTIQUA FONT designed by Gerhard Grossmann", 4, Color.Lime, new Vector2(20, 220)),
         new ExampleMessage("ALPHA_BETA FONT designed by Brian Kent (AEnigma)", 4, Color.Gold, new Vector2(20, 250)),
-        new ExampleMessage("JUPITER_CRASH FONT designed by Brian Kent (AEnigma)", 1, Color.Red, new Vector2(20, 280))
+        new ExampleMessage("JUPITER_CRASH FONT designed by Brian Kent (AEnigma)", 1, Color.Red, new Vector2(20, 280)),
+        new ExampleMessage("THIS IS A custom SPRITE FONT...", 4, Color.White, new Vector2(20, 310)),
+        new ExampleMessage("...and this is ANOTHER CUSTOM font...", 4, Color.White, new Vector2(20, 340)),
+        new ExampleMessage("...and a THIRD one! GREAT! :D", 1, Color.White, new Vector2(20, 370))
     };
 }

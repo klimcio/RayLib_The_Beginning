@@ -2,7 +2,7 @@
 
 internal class RaylibFonts
 {
-    public static Font[] Fonts { get; } = new Font[8];
+    public static Font[] Fonts { get; } = new Font[11];
 
     public static void LoadFonts()
     {
@@ -14,6 +14,9 @@ internal class RaylibFonts
         Fonts[5] = Raylib.LoadFont("assets/fonts/pixantiqua.png");
         Fonts[6] = Raylib.LoadFont("assets/fonts/alpha_beta.png");
         Fonts[7] = Raylib.LoadFont("assets/fonts/jupiter_crash.png");
+        Fonts[8] = Raylib.LoadFont("assets/fonts/custom_mecha.png");
+        Fonts[9] = Raylib.LoadFont("assets/fonts/custom_alagard.png");
+        Fonts[10] = Raylib.LoadFont("assets/fonts/custom_jupiter_crash.png");
     }
 
     public static void UnloadFonts()
