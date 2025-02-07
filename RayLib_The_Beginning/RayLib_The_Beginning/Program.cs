@@ -74,7 +74,7 @@ internal class Program
         return currentScreen switch
         {
             GameScreen.TITLE => titlePhase == null ? titlePhase = new FontTitlePhase(settings) : titlePhase,
-            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new BezierGameplayPhase(settings) : gameplayPhase,
+            GameScreen.GAMEPLAY => gameplayPhase == null ? gameplayPhase = new ParallaxGameplayPhase(settings) : gameplayPhase,
             GameScreen.ENDING => endingPhase == null ? endingPhase = new EndingPhase(settings) : endingPhase,
             _ => logoPhase == null ? logoPhase = new LogoImagePhase(settings) : logoPhase,
         };

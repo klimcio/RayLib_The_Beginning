@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\backgrounds\cyberpunk_street_background.png" />
+    <None Remove="assets\backgrounds\cyberpunk_street_foreground.png" />
+    <None Remove="assets\backgrounds\cyberpunk_street_midground.png" />
     <None Remove="assets\fonts\alagard.png" />
     <None Remove="assets\fonts\alpha_beta.png" />
     <None Remove="assets\fonts\custom_alagard.png" />
@@ -23,6 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="assets\backgrounds\cyberpunk_street_background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\backgrounds\cyberpunk_street_foreground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\backgrounds\cyberpunk_street_midground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\fonts\alagard.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

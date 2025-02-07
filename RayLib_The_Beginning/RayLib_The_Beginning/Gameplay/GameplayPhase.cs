@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System.ComponentModel;
 using System.Numerics;
 
 public class GameplayPhase : IGamePhase
@@ -16,7 +17,7 @@ public class GameplayPhase : IGamePhase
         this.settings = settings;
 
         protagonist = new Protagonist(
-            settings.ScreenCenter, 
+            settings.ScreenCenter,
             initialSpeed
         );
     }
@@ -29,7 +30,7 @@ public class GameplayPhase : IGamePhase
 
         protagonist.Draw();
 
-        if (IsPause && (frameCounter/30%2 == 0))
+        if (IsPause && (frameCounter / 30 % 2 == 0))
             Raylib.DrawText("paused", 350, 200, 30, Color.Gray);
 
         Raylib.DrawFPS(10, 10);
