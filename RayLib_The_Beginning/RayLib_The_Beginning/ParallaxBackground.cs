@@ -1,7 +1,7 @@
 ﻿using Raylib_cs;
 using System.Numerics;
 
-public class BackgroundTexture
+public class ParallaxBackground
 {
     private const float Scale = 2.0f;
     private const float Rotation = 0.0f;
@@ -9,16 +9,16 @@ public class BackgroundTexture
     private Texture2D Texture;
     private float ScrollingSpeed;
 
-    private BackgroundTexture(Texture2D texture, float scrollingSpeed)
+    private ParallaxBackground(Texture2D texture, float scrollingSpeed)
     {
         Texture = texture;
         ScrollingSpeed = scrollingSpeed;
     }
 
-    public static BackgroundTexture Create(string texturePath, float scrollingSpeed)
+    public static ParallaxBackground Create(string texturePath, float scrollingSpeed)
     {
         var texture = Raylib.LoadTexture(texturePath);
-        return new BackgroundTexture(texture, scrollingSpeed);
+        return new ParallaxBackground(texture, scrollingSpeed);
     }
 
     public void Draw()

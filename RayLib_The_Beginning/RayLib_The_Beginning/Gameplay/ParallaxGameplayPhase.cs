@@ -6,17 +6,17 @@ public class ParallaxGameplayPhase : IGamePhase
     bool IsPause = false;
     int frameCounter = 0;
 
-    BackgroundTexture background;
-    BackgroundTexture midground;
-    BackgroundTexture foreground;
+    ParallaxBackground background;
+    ParallaxBackground midground;
+    ParallaxBackground foreground;
 
     public ParallaxGameplayPhase(Settings settings)
     {
         this.settings = settings;
         
-        background = BackgroundTexture.Create("assets/backgrounds/cyberpunk_street_background.png", 0.1f);
-        midground = BackgroundTexture.Create("assets/backgrounds/cyberpunk_street_midground.png", 0.5f);
-        foreground = BackgroundTexture.Create("assets/backgrounds/cyberpunk_street_foreground.png", 1.0f);
+        background = ParallaxBackground.Create("assets/backgrounds/cyberpunk_street_background.png", 0.1f);
+        midground = ParallaxBackground.Create("assets/backgrounds/cyberpunk_street_midground.png", 0.5f);
+        foreground = ParallaxBackground.Create("assets/backgrounds/cyberpunk_street_foreground.png", 1.0f);
     }
 
     public void Draw()
