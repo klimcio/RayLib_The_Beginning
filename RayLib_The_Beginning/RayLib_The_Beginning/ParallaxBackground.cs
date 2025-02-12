@@ -5,9 +5,10 @@ public class ParallaxBackground
 {
     private const float Scale = 2.0f;
     private const float Rotation = 0.0f;
+    private float ScrollingSpeed;
+
     private float scrolling = 0.0f;
     private Texture2D Texture;
-    private float ScrollingSpeed;
 
     private ParallaxBackground(Texture2D texture, float scrollingSpeed)
     {
