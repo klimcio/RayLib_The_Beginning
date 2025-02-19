@@ -80,3 +80,29 @@ internal class Program
         };
     }
 }
+
+public class Window
+{
+    private bool ExitWindowRequested;
+
+    public Window()
+    {
+        ExitWindowRequested = false;
+    }
+
+    public bool IsWindowVisible() 
+        => ExitWindowRequested;
+
+    public void ShowWindow() 
+        => ExitWindowRequested = true;
+
+    public void HideWindow()
+        => ExitWindowRequested = false;
+
+    public void Draw()
+    {
+        Raylib.DrawRectangle(0, 100, settings.Width, 200, Color.Black);
+        Raylib.DrawText("Do you really want to exit?", 40, 180, 30, Color.White);
+        Raylib.DrawText("Press Y to confirm or N to cancel", 120, 200, 20, Color.LightGray);
+    }
+}
